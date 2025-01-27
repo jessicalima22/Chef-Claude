@@ -1,8 +1,13 @@
-# React + Vite
+# Chef-Claude
+  
+🚧 *Under construction!* 🛠️  
+👷‍♀️ Stay tuned for updates! 🚀  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚧 *In Arbeit!* 🛠️  
+👷‍♂️ Bleib dran für Updates! 🚀  
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Have you ever imagined being able to pick just 4 random, boring leftovers from your fridge and, in a matter of seconds, get a ready-to-go recipe to turn them into something super delicious? Your troubles are over! No more piling up containers in the fridge, only to let them spoil and throw them away a few days later!
+
+
+https://jessicalima22.github.io/Chef-Claude/

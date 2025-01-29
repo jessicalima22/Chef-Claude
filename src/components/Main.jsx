@@ -1,7 +1,7 @@
 import React from "react"
 import IngredientsList from "./IngredientsList"
 import ClaudeRecipe from "./ClaudeRecipe"
-import { getRecipeFromMistral } from "../utils/getRecipeFromMIstral"
+import { getRecipeFromMistral } from "../utils/getRecipeFromMistral"
 
 export default function Main() {
     const [ingredients, setIngredients] = React.useState([])
@@ -18,10 +18,10 @@ export default function Main() {
     }
 
     const handleSubmit = (event) => {
-        event.preventDefault(); // Evita que o formulário seja enviado de maneira tradicional
-        const formData = new FormData(event.target);
-        addIngredient(formData);
-    };
+        event.preventDefault()
+        const formData = new FormData(event.target) 
+        addIngredient(formData) 
+    }
 
     return (
         <main>

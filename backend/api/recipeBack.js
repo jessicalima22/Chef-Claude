@@ -5,6 +5,7 @@ const SYSTEM_PROMPT = `You are an assistant that receives a list of ingredients 
 
 
 console.log('Servidor rodando...');
+console.log('Token Hugging Face:', req.env.VITE_HF_ACCESS_TOKEN);
 
 export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Credentials', true)

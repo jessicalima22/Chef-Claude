@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "engines": {
-    "node": "14.x"
+    "node": ">=18.0.0"  
   },
   "scripts": {
     "dev": "vite",
@@ -15,10 +15,12 @@
     "deploy": "gh-pages -d dist",
     "start": "react-scripts start",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev:api": "node api/recipeBack.js"  
   },
   "dependencies": {
-    "@huggingface/inference": "^3.1.2",
+    "@huggingface/inference": "^3.1.2",  
+    "cors": "^2.8.5",  
     "dotenv": "^16.4.7",
     "node-fetch": "^3.3.2",
     "react": "^18.3.1",

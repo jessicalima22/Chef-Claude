@@ -5,29 +5,35 @@ const SYSTEM_PROMPT = `You are an assistant that receives a list of ingredients.
 export default async function handler(req, res) {
     console.log('API Called');
 
-    // Configuração CORS
+    // Configuração CORS mais específica
+    const allowedOrigins = [
+        'http://localhost:5173',
+        'https://jessicalima22.github.io/Chef-Claude/' 
+    ];
+    
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+
     res.setHeader('Access-Control-Allow-Credentials', true);
-    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
 
     if (req.method === 'OPTIONS') {
         return res.status(200).end();
     }
 
     try {
-        // Acessar a variável de ambiente corretamente
         const hfToken = process.env.VITE_HF_ACCESS_TOKEN;
-        console.log('Token exists:', !!hfToken); // Log para debug
-
+        
         if (!hfToken) {
             throw new Error('HuggingFace token not configured');
         }
 
         const hf = new HfInference(hfToken);
-        const ingredients = req.body;
-        console.log('Received ingredients:', ingredients);
-
+        const { ingredients } = req.body; // Extraindo do objeto
+        
         if (!Array.isArray(ingredients) || ingredients.length < 4) {
             return res.status(400).json({
                 error: 'Please provide at least 4 ingredients in an array'
@@ -50,7 +56,7 @@ export default async function handler(req, res) {
         console.error('Detailed error:', error);
         return res.status(500).json({
             error: error.message,
-            details: error.stack
+            details: process.env.NODE_ENV === 'development' ? error.stack : undefined
         });
     }
 }

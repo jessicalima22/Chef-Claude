@@ -1,25 +1,28 @@
-// Em seu arquivo que faz a chamada da API
-//const VERCEL_URL = 'http://localhost:3000/api/recipeBack'; // Durante desenvolvimento
-const VERCEL_URL = 'https://chef-claude-c2ua2rc49-jessicalima22s-projects.vercel.app/'; // Em produção
+const API_URL = import.meta.env.MODE === 'production' 
+  ? 'https://chef-claude-d20fib5oj-jessicalima22s-projects.vercel.app/api/recipeBack'  // URL de produção
+  : 'http://localhost:3000/api/recipeBack'; 
 
 export async function getRecipeFromMistral(ingredientsArr) {
     try {
-        const response = await fetch(VERCEL_URL, {
+        const response = await fetch(API_URL, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
-            body: JSON.stringify(ingredientsArr) // Enviando direto o array
+            body: JSON.stringify({ ingredients: ingredientsArr }), // Enviando em um objeto
+            mode: 'cors' // Explicitamente definindo o modo CORS
         });
 
         if (!response.ok) {
-            throw new Error('Failed to fetch recipe');
+            const errorData = await response.json().catch(() => null);
+            throw new Error(errorData?.error || 'Failed to fetch recipe');
         }
 
         const data = await response.json();
-        return data.recipe; // Retorna apenas o texto da receita
+        return data.recipe;
     } catch (err) {
-        console.error(err.message);
+        console.error('Error fetching recipe:', err);
         throw err;
     }
 }

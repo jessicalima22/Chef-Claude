@@ -1,6 +1,6 @@
 // Em seu arquivo que faz a chamada da API
 //const VERCEL_URL = 'http://localhost:3000/api/recipeBack'; // Durante desenvolvimento
-const VERCEL_URL = 'https://seu-projeto.vercel.app/api/recipeBack'; // Em produção
+const VERCEL_URL = 'https://chef-claude-c2ua2rc49-jessicalima22s-projects.vercel.app/api/recipeBack'; // Em produção
 
 export async function getRecipeFromMistral(ingredientsArr) {
     try {

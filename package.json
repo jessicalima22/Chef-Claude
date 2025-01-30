@@ -1,34 +1,53 @@
-{   
-  "name": "chef-claude",   
-  "private": true,   
-  "version": "0.0.0",   
-  "type": "module",   
-  "engines": {     
-    "node": ">=18.0.0"   
-  },   
-  "scripts": {     
-    "dev": "vite",     
-    "build": "vite build",     
-    "lint": "eslint .",     
-    "preview": "vite preview",     
-    "predeploy": "npm run build",     
-    "deploy": "gh-pages -d dist"
-  },   
-  "dependencies": {     
-    "@huggingface/inference": "^3.1.2",     
-    "dotenv": "^16.4.7",     
-    "node-fetch": "^3.3.2",     
-    "react": "^18.3.1",     
-    "react-dom": "^18.3.1"   
-  },   
-  "devDependencies": {     
-    "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "^8.56.0",     
-    "eslint-plugin-react": "^7.33.2",     
-    "eslint-plugin-react-hooks": "^4.6.0",     
-    "eslint-plugin-react-refresh": "^0.4.5",     
-    "gh-pages": "^6.1.1",     
-    "vite": "^5.0.12"   
+{
+  "name": "chef-claude",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"  
   },
-  "homepage": "https://jessicalima22.github.io/Chef-Claude/"
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "start": "react-scripts start",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "dev:api": "node api/recipeBack.js",
+    "vercel-build": "vite build"  
+  },
+  "dependencies": {
+    "@huggingface/inference": "^3.1.2",  
+    "cors": "^2.8.5",  
+    "dotenv": "^16.4.7",
+    "node-fetch": "^3.3.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "gh-pages": "^6.3.0",
+    "globals": "^15.14.0",
+    "vite": "^6.0.11"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-win32-x64-msvc": "4.6.1"
+  },
+  "overrides": {
+    "rollup": {
+      "@rollup/rollup-linux-x64-gnu": "4.6.1",
+      "@rollup/rollup-win32-x64-msvc": "4.6.1"
+    }
+  },
+  "homepage": "https://github.com/jessicalima22/Chef-Claude.git"
 }

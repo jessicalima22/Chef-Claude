@@ -2,6 +2,10 @@ import { HfInference } from '@huggingface/inference'
 
 const SYSTEM_PROMPT = `You are an assistant that receives a list of ingredients...`
 
+export const config = {
+    runtime: 'nodejs'
+  };
+
 export default async function handler(req, res) {
     console.log('========= API ROUTE HIT =========');
     console.log('Request method:', req.method);

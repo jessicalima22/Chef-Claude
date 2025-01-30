@@ -16,7 +16,8 @@
     "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev:api": "node api/recipeBack.js"  
+    "dev:api": "node api/recipeBack.js",
+    "vercel-build": "vite build"  
   },
   "dependencies": {
     "@huggingface/inference": "^3.1.2",  

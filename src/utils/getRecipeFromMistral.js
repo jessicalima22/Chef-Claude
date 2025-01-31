@@ -10,7 +10,7 @@ export async function getRecipeFromMistral(ingredientsArr) {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify({ ingredients: ingredientsArr }), // Enviando em um objeto
+            body: JSON.stringify(ingredientsArr), // Enviando em um objeto
             mode: 'cors' // Explicitamente definindo o modo CORS
         });
 

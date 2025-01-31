@@ -21,6 +21,7 @@ export default function Main() {
         event.preventDefault()
         const formData = new FormData(event.target) 
         addIngredient(formData) 
+        event.target.reset()
     }
 
     return (

@@ -63,6 +63,28 @@ main {
   margin-right: 5px;
 }
 
+input:focus {
+  outline: none;
+  border: 2px solid #9aafcd;
+  box-shadow: 0 0 3px #9aafcd;
+}
+
+button:focus {
+  outline: none;
+  border: 2px solid #9aafcd;
+  box-shadow: 0 0 3px #9aafcd;
+}
+
+input, button {
+  border: 2px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+input:focus-visible,
+button:focus-visible {
+  outline: 2px solid #9aafcd;
+}
+
 ul.ingredients-list {
   margin-bottom: 48px;
 }

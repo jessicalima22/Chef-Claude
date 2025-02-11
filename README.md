@@ -4,7 +4,7 @@ An innovative AI-powered recipe generator that transforms your ingredients into 
 
 [Deutsche Version unten](#chef-claude-deutsch) 🇩🇪
 
-🥄 Live Demo
+🥄 [Live Demo](https://www.loom.com/share/2344d0335e22471682e16d33cec5fb87?sid=9da3e123-2f1a-4c88-868c-5b115e5c61bd)
 
 Try it out: [Chef Claude Demo](https://jessicalima22.github.io/Chef-Claude/) 😋
 

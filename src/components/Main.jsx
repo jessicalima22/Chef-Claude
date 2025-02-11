@@ -1,15 +1,23 @@
 import React from "react"
 import IngredientsList from "./IngredientsList"
 import ClaudeRecipe from "./ClaudeRecipe"
+import LoadingMessage from './LoadingMessage'
 import { getRecipeFromMistral } from "../utils/getRecipeFromMistral"
 
 export default function Main() {
     const [ingredients, setIngredients] = React.useState([])
     const [recipe, setRecipe] = React.useState("")
+    const [error, setError] = React.useState("")
+    const [isLoading, setIsLoading] = React.useState(false)
 
     async function getRecipe() {
-        const recipeMarkdown = await getRecipeFromMistral(ingredients)
-        setRecipe(recipeMarkdown)
+        setIsLoading(true)
+        try {
+            const recipeMarkdown = await getRecipeFromMistral(ingredients)
+            setRecipe(recipeMarkdown)
+        } finally {
+            setIsLoading(false)
+        }
     }
 
     function addIngredient(formData) {
@@ -19,9 +27,22 @@ export default function Main() {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        const formData = new FormData(event.target) 
-        addIngredient(formData) 
-        event.target.reset()
+        const formData = new FormData(event.target)
+        const ingredient = formData.get("ingredient")
+        
+        if (ingredient.trim()) {
+            setError("")
+            addIngredient(formData)
+            event.target.reset()
+        } else {
+            setError("*** Please type an ingredient before adding ***")
+        }
+    }
+
+    const resetApp = () => {
+        setIngredients([])
+        setRecipe("")
+        setError("")
     }
 
     return (
@@ -32,9 +53,16 @@ export default function Main() {
                     placeholder="e.g. oregano"
                     aria-label="Add ingredient"
                     name="ingredient"
+                    className={error ? "input-error" : ""}
                 />
                 <button>Add ingredient</button>
             </form>
+            
+            {error && (
+                <div className="error-message" role="alert">
+                    <p>{error}</p>
+                </div>
+            )}
 
             {ingredients.length > 0 &&
                 <IngredientsList
@@ -42,8 +70,22 @@ export default function Main() {
                     getRecipe={getRecipe}
                 />
             }
+            
+            {isLoading ? (
+                <LoadingMessage />
+            ) : (
+                recipe && <ClaudeRecipe recipe={recipe} />
+            )}
 
-            {recipe && <ClaudeRecipe recipe={recipe} />}
+            {recipe && (
+                <div className="get-recipe-container">
+                    <div>
+                        <h3>Try another recipe?</h3>
+                        <p>Start fresh with new ingredients.</p>
+                    </div>
+                    <button onClick={resetApp}>New recipe</button>
+                </div>
+            )}
         </main>
     )
 }

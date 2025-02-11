@@ -1,6 +1,6 @@
 const API_URL = import.meta.env.MODE === 'production' 
   ? 'https://chef-claude-three.vercel.app/api/recipeBack.js'  // URL de produção
-  : 'http://localhost:3000'; 
+  : 'http://localhost:3000/api/recipeBack.js'; 
 
 export async function getRecipeFromMistral(ingredientsArr) {
     try {
